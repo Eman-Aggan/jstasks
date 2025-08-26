@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css.css">
+    <title>Document</title>
+    <style>
+        
+body{
+    font-family: sans-serif;
+}
+
+.box
+{
+    border: 1px solid #EEEEEE;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 500px;
+    position: absolute;
+    left: 700px;
+    top:200px;
+    translate: (-50% , -50%);
+   
+}
+
+.box form {
+     display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.box  form button {
+    margin: 20px;
+   color: white;
+   background-color: blueviolet;
+   border-radius: 8px;
+   outline: none;
+   border-color:blueviolet ;
+   height: 50px;
+    
+}
+
+
+.box  form input {
+    margin:20px;
+   height: 20px;
+   padding: 10px;
+}
+
+.box .output {
+     margin:20px;
+     text-align: center;
+     color: rgb(9, 129, 15);
+
+}
+
+.error{
+    background-color: red;
+}
+
+    </style>
+</head>
+<body>
+    <div class="box">
+       
+    <form  id="form">
+        
+        <input type="number" id="num1" placeholder="Enter first number" required>
+         <input type="number" id="num2" placeholder="Enter second number" required >
+         <button type="button" id="bt1" onclick="calculate('add')"> + addition</button>
+         <button type="button" id ="bt2" onclick="calculate('sub')"> - Subtraction</button>
+         <button type="button" id="bt3"  onclick="calculate('div')"> / Division</button>
+         <button type="button" id="bt4"  onclick="calculate('multiple')"> X Multiplication</button>
+
+    </form>
+   
+    <div class="output" id="result">
+    </div>
+    </div>
+    <script>
+function calculate(operation){
+let x = Number(document.getElementById("num1").value);
+let y = Number(document.getElementById("num2").value);
+ const resDiv = document.getElementById('result')
+
+let res;
+
+    if (isNaN(x) || isNaN(y)) {
+
+        resDiv.textContent = "please Enter  Valid  numbers.";
+
+        resDiv.classList.add("error");
+
+        return;
+
+    }
+
+
+
+    switch(operation){
+        case 'add':
+            res = x +y;
+            break;
+
+        case 'sub':
+
+           res = x - y;
+            break;
+
+        case 'div':
+            if (y === 0) {
+
+                resDiv.textContent = `can not divide by zero`;
+
+                resDiv.classList.add("error");
+
+                return;
+
+            }
+            else
+                {  
+                res = x / y;
+                resDiv.classList.remove("error");
+            break;
+        }
+
+          
+
+        case 'multiple':
+
+           res = x * y;
+            break;
+    }
+
+    resDiv.textContent = `result : ${res}`
+
+
+
+}
+</script>
+</body>
+</html>

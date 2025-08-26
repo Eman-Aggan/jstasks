@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body{
+     display: flex
+;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+        }
+        
+.box{
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            border: 1px solid #dddddd;
+            box-shadow: 0 2px 4px 8px #EEEEEE ;
+            padding: 20px;
+            text-align: center;
+             height: 300px;
+             width: 70%;
+            /* position: relative; */
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            border-radius: 15px;
+           
+    }
+    .box input:focus , input:hover{
+       
+       outline: none;
+    }
+.box button{
+    background: #28a745;
+    margin: 20px;
+    color: white;
+    border: none;
+    padding: 5px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+     width: 100px;
+   
+            }
+.box input{
+    width: 400px;
+    border: 1px solid #EEEEEE;
+    top: 140px;
+    padding: 10px;
+     border-radius:8px;
+
+
+
+}
+
+        .box .msg{
+           
+            
+            margin-top: 20px;
+            border: 1px solid #EEEEEE;
+            background-color: #EEEEEE;
+            color: #28a745;
+            border-radius: 8px;
+            white-space: nowrap;
+            /* width: 500px; */
+            height: 50px;
+            padding: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            box-sizing: content-box;
+            display: none;
+          
+           
+            
+        }
+        
+    </style>
+        <link rel="stylesheet" href="../css/all.min.css">
+           
+</head>
+<body>
+   <div class="box">
+    <h1>What is your favorite Day ?</h1>
+   <input type="text"  id="day" placeholder="Friday">
+    <button type="submit" id="btn"> Check <i class="fa-solid fa-check"></i> </button> 
+    <div class="msg" id="msg" >
+        
+    </div>
+</div>
+   
+    <script>
+        const btn = document.getElementById("btn");
+        let day = (document.getElementById("day"));
+        let msg = (document.getElementById("msg"));
+    
+
+      
+        
+btn.addEventListener("click" , () =>{
+    const dayVal = day.value.trim().toLowerCase() ;
+    
+      switch(dayVal){
+            case 'saturday' :  msg.textContent = "Weekend vibes! Start your week fresh." ;   break;
+            case 'sunday'   :  msg.textContent = "Weekend vibes! Start your week fresh." ;   break;
+            case 'monday'   :  msg.textContent = "Let's kick off the week strong!" ;         break;
+            case 'tuesday'  :  msg.textContent = "Almost there " ;                           break;
+            case 'wednesday':  msg.textContent = "Hooooray! it is Wednesday" ;               break;
+            case 'thursday' :  msg.textContent = "Finally it's Thursday " ;                  break;
+            case 'friday'   :  msg.textContent = "It's Friday, have a blessed day!" ;        break;
+            
+     
+            default :  msg.textContent="Invalid , please Enter one of  the Days  of the Week "
+     
+        }
+        msg.style.display ="block";
+
+    
+})
+        
+
+    </script>
+</body>
+</html>
