@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+          .container{
+            border: 1px solid #EEEEEE;
+            border-radius:8px ;
+            box-shadow:  0 2px 4px 8px #dddddd;
+            padding: 20px;
+            text-align: center;
+        }
+          .box{
+            /* display: flex; */
+            /* justify-content: space-between; */
+            border: 1px solid #EEEEEE;
+           
+            border-radius:8px ;
+            box-shadow:  0 2px 4px 8px #dddddd;
+            /* padding: 20px; */
+            /* text-align: center; */
+        }
+                  .items{
+           margin: 20px;
+            background-color: white;
+            border: 1px solid #EEEEEE;
+            border-radius:8px ;
+            box-shadow:  0 2px 4px 8px #dddddd;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .items  span{
+            font-weight: bold;
+        }
+        .items p:nth-child(3) span{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="cntr">
+        <h1>Prices After Tax </h1>
+      
+            <div class="box" id="box"> 
+             
+            </div>
+           
+    </div>
+    <script>
+        const box = document.getElementById("box");
+             const products = [
+            { name :'product  1' , price: 50  } ,
+            { name :'product  2' , price: 100  } ,
+            { name :'product  3' , price: 150 } ,
+            { name :'product  4' , price: 200 } ,
+        ];
+        const price = document.getElementById("price")
+        function displayProducts (products){
+            products.forEach(item => {
+                const pDiv = document.createElement("div");
+                pDiv.className = "items";
+                pDiv.innerHTML = 
+                `         <h1>${item.name}</h1>
+                <p >original Price : <span>${item.price}  L.E. </span></p>
+                <p id="Tax">Price After Tax: <span>${item.price+=item.price*0.14}  L.E. </span></p>`;
+                box.appendChild(pDiv);
+                
+            });
+
+
+        }
+     
+
+        displayProducts (products);
+    </script>
+</body>
+</html>

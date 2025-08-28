@@ -15,6 +15,15 @@
     padding: 20px;
     text-align: center;
     align-items: center;
+    width: 70%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 6px #EEEEEE ;
+    position: absolute;
+    position: relative;
+    left: 300px;
+    top: 200px;
+   
+   
     }
  .box button{
               background: #286ea7;
@@ -29,6 +38,11 @@
 
         }
 
+        .box form{
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+        }
 
          .box input{
             padding: 30px ;
@@ -58,7 +72,7 @@
             border-radius: 6px;
             margin: 20px;
             text-align: center;
-            padding: 30px 0 0;
+            padding: 20px 0 20px 20px;
             display: flex;
             justify-content: space-between;
             align-content: center;
@@ -75,8 +89,10 @@
 
             }
 
-             .task .ntask{
-                margin:   10px 0px 20px 20px;
+             .task .taskContainer{
+               margin:   10px 0px 20px 20px;
+               position: absolute;
+                
              }
 
            
@@ -85,30 +101,32 @@
 <body>
    <div class="box">
     <h1>To Do List</h1>
-    <form action="">
+    <form id="form">
    <input type="text"  id="in" placeholder="Add new task"  required>
     <button type="submit" id="btn" > Add New Task  <i class="fa-solid fa-check"></i> </button> 
     </form>
-    <div class="task" id="task">
-         <div class="ntask"  id="ntask"> </div>
-        <button  class="del" onclick="Delete()"> Delete</button>
-    </div>
+    <!-- <div class="task" id="task"> -->
+         <div class="taskContainer"  id="taskContainer"> </div>
+        <!-- <button  class="del" onclick="deleteTask()"> Delete</button> -->
+    <!-- </div> -->
     
 </div>
 
 <script>
 
 const tasks = [];
-const tasky = (document.getElementById("in"));
-const tasksContainer = document.getElementById("task");
 
-document.getElementById("btn").addEventListener('click' ,()=>{
+const tasksContainer = document.getElementById("taskContainer");
+
+document.getElementById("form").addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    const tasky = (document.getElementById("in")).value.trim();
    if(tasky){
-      tasks.push(tasky.value);
+      tasks.push(tasky);
       tasks.sort();
-      console.log(tasks);
-     
-
+        console.log(tasks);
+      displayTasks();
+    
       document.getElementById("in").value = "";
    
       
@@ -117,6 +135,26 @@ document.getElementById("btn").addEventListener('click' ,()=>{
 
 } );
 
+
+function  displayTasks(){
+   tasksContainer.innerHTML = "";
+   tasks.forEach((task , index) => {
+      const taskDiv = document.createElement("div");
+      taskDiv.className = "task";
+      taskDiv.innerHTML = `
+      <span> ${task}</span>
+      <button onclick= "deleteTask (${index})">Delete</button>`;
+      tasksContainer.appendChild(taskDiv);
+         });
+
+
+
+}
+function deleteTask(index){
+   tasks.splice(index , 1);
+   displayTasks();
+
+}
 
 
 

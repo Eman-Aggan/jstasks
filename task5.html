@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        
+        .box{
+            border: 1px solid #EEEEEE;
+            border-radius:8px ;
+            box-shadow:  0 2px 4px 8px #dddddd;
+            padding: 20px;
+            text-align: center;
+        }
+        .box button {
+            /* #470d99 */
+            background-color: #da0d96;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 4px;
+            padding: 8px;
+            width: 100px;
+            margin-left: 15px;
+            
+        }
+
+        .box button:active {
+            transform: scale(0.9);
+            box-shadow: 0  2px 8px #555;
+        }
+
+        .box input {
+            outline: none;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+        }
+         .box  .tile {
+            display: flex;
+            justify-content: center;
+         }
+
+            .box  .tile .product{
+            /* display:  flex; */
+            /* flex-wrap: wrap; */
+            border: 1px solid #EEEEEE;
+            border-radius:8px ;
+            box-shadow:  0 2px 4px 8px #dddddd;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <h1>Product List</h1>
+        <input type="number" id="searchInput" placeholder="Max Price">
+        <button id="btn" onclick="filterProducts()">Filter </button>
+    <div class="tile" id="tile">
+
+
+</div>
+
+
+    </div>
+    <script>
+        
+        // const numProducts = 4;
+        const products = [
+            { name :'product  1' , price: 50  } ,
+            { name :'product  2' , price: 80  } ,
+            { name :'product  3' , price: 150 } ,
+            { name :'product  4' , price: 200 } ,
+        ];
+        
+    const tile = document.getElementById("tile");
+    function  displayProducts(filteredProducts){
+        tile.innerHTML = "";
+        if(filteredProducts.length === 0 ){
+            tile.innerHTML = `<p>There is no products to show. </p>`;
+                return;
+        }
+
+        // This part is responsible for adding the name and prices to the tile to be written and displayed in the webpage.
+        filteredProducts.forEach(product =>{
+            const productDiv = document.createElement("div");
+            productDiv.className = "product";
+            productDiv.innerHTML = `
+            <h3> ${product.name} </h3>
+            <p> price : ${product.price} L.E </p> `;
+        tile.appendChild(productDiv);
+        });
+
+    }
+    function  filterProducts (){ 
+        const maxPrice = parseInt(document.getElementById("searchInput").value);
+        const filtered = !isNaN(maxPrice)?
+        products.filter(product => product.price <= maxPrice): products;
+        displayProducts(filtered);
+    }
+
+    displayProducts(products);
+    </script>
+    
+</body>
+</html>
