@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7</title>
+    <style>
+        .container {
+            border: 1px solid #EEEEEE;
+            border-radius:8px ;
+            box-shadow:  0 2px 4px 8px #dddddd;
+            padding: 20px;
+            text-align: center;
+
+        }
+        .product{
+            
+            margin: 20px;
+            border: 1px solid #EEEEEE;
+            border-radius:8px ;
+            box-shadow:  0 2px 4px 8px #dddddd;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>List of Products</h1>
+        <div class="productContainer" id="pc">
+
+        </div>
+        <button id="btn" onclick="filterProducts()">Filter Products less than 100 L.E.</button>
+    </div>
+   
+    <script>
+        const products = [
+            { name :'product  1' , price: 50  } ,
+            { name :'product  2' , price: 80  } ,
+            { name :'product  3' , price: 150 } ,
+            { name :'product  4' , price: 200 } ,
+        ];
+        const  productContainer = document.getElementById("pc");
+        function displayProducts(filteredProducts){
+            products.forEach(item => {
+                const productDiv = document.createElement("div");
+                productDiv.className = "product";
+                productDiv.innerHTML = 
+                `<h1>${item.name} </h1>
+                <p>The Original Price : ${item.price} L.E.</p>
+                <p>The price after Tax : ${item.price+=item.price*0.14} L.E.</p>
+                `;
+                productContainer.appendChild(productDiv);
+
+                
+            });
+        }
+        function filterProducts (){
+            const filteredProducts = products.filter(item =>products.price<=100);
+       
+            displayProducts(filteredProducts);
+        
+        }
+
+displayProducts(products);
+    </script>
+</body>
+</html>
