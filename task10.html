@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .container
+        {  margin-top: 80px;
+            padding-top: 50px;
+            border: 1px solid #EEEEEE;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 #dddddd ;
+            text-align: center;
+        }
+        .table  {
+            /* border: 1px solid  rgb(179, 47, 255); */
+            /* background-color: #dddddd ; */
+            border-collapse: collapse;
+            /* color: black; */
+            width: 100%;
+           }
+
+        .table th, .table td {
+    padding: 16px 32px; 
+    text-align: center;
+}
+.table th {
+    background-color: rgb(179, 47, 255) ;
+    color: white;
+}
+
+     .form{
+        margin: 20px;
+     }
+    </style>
+
+</head>
+<body>
+
+    <div class="container" id="cntr">
+        <h1>Table of users</h1>
+
+        <table class="table">
+                        <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>E-mail</th>
+                    <th>Actions</th>
+                        </tr>
+        </table>
+
+
+        <form  class="form" id = "form" >
+            <input class = "name"  name="name" type="text" placeholder="name" required>
+            <input class = "age"  name="age" type="number" placeholder="Age" required>
+            <input class = "mail"  name="mail" type="text" placeholder="Email" required>
+            <input class="button" name="btn" type="submit"  id= "btn" value="Add user">
+
+
+
+        </form>
+    </div>
+    <script>
+        const table = document.querySelector(".table")
+        const name = document.querySelector(".name");
+        const Age = document.querySelector(".age");
+        const mail = document.querySelector(".mail");
+        const submit = document.getElementById("btn")
+        submit.onclick = function(event) {
+        event.preventDefault();
+        addUser(name.value, Age.value, mail.value);
+    
+};
+
+        const user = [{name:"" ,Age:"" ,mail:""}];
+
+
+        function addUser (name, age , mail) {
+        console.log("clicked")
+        if(!name || !age || !mail){
+            alert("Please Fill all the fields")
+        }
+        else {const tr = document.createElement("tr")
+
+        const tdName  = document.createElement("td");
+        tdName.textContent  = name;
+
+        const tdAge  = document.createElement("td");
+        tdAge.textContent = age;
+
+        const tdmail  = document.createElement("td");
+        tdmail.textContent = mail;
+
+        const deleteBtn = document.createElement("button");
+
+        deleteBtn.textContent = "Delete";
+        deleteBtn.onclick = function() {
+            tr.remove();
+        };
+
+        tr.appendChild(tdName);
+        tr.appendChild(tdAge);
+        tr.appendChild(tdmail);
+        tr.appendChild(deleteBtn)
+        table.appendChild(tr);
+          deleteBtn.style.cssText = "margin:20px ; display: in-line";
+        
+}
+        
+      }
+
+
+
+    </script>
+</body>
+</html>
