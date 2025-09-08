@@ -71,6 +71,9 @@
         submit.onclick = function(event) {
         event.preventDefault();
         addUser(name.value, Age.value, mail.value);
+         name.value ="";
+        Age.value ="";
+        mail.value ="";
     
 };
 
@@ -100,11 +103,15 @@
             tr.remove();
         };
 
+       
+        
         tr.appendChild(tdName);
         tr.appendChild(tdAge);
         tr.appendChild(tdmail);
         tr.appendChild(deleteBtn)
         table.appendChild(tr);
+
+       
           deleteBtn.style.cssText = "margin:20px ; display: in-line";
         
 }
