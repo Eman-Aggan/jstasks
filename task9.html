@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 1px solid #EEEEEE;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 #dddddd ;
+            text-align: center;
+        }
+      
+        button{
+            margin: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h3>List of Products</h3>
+        
+   
+    </div>
+    <script>
+       
+        
+    const products = [  {name:"Laptop", price: 20000 ,desc:"Gaming Laptop"},
+                        {name:"Mobile", price: 15000 ,desc:"Super AMOLED"},
+                        {name:"AirPods", price: 10000 ,desc:"High Quality"}
+    ]
+
+let index = 0;
+    for (const i of products){
+        const container = document.querySelector(".container");
+        const productDiv = document.createElement("div");
+        const head = document.createElement("h3");
+        const parag = document.createElement("p");
+        const span  = document.createElement("span");
+        const desc = document.createElement("p");
+        span.textContent = `L.E`;
+        //  parag.appendChild(span);
+        index++;
+        head.textContent = `${i.name} `;
+        parag.textContent = `${i.price} ` ;
+        desc.textContent = `${i.desc} ` ;
+            const removeBtn = document.createElement("button");
+            removeBtn.textContent = ("Remove");
+            removeBtn.onclick = ()=> productDiv.remove();
+        const updateBtn=  document.createElement("button");
+        updateBtn.onclick = ()=> {
+
+
+             let x = prompt(`Update ${i.name} to :` , `${i.name} `);     
+            if((x  !== null ))
+            {
+                head.textContent = `${x}`;
+            }
+
+             let y = prompt(`Update ${i.price} to :` , `${i.price} `);
+            if(y !== null   && (!isNaN(y))) 
+              {  parag.textContent = `${y}`;}
+              else{
+                alert(undefined);
+                parag.textContent = "invalid"
+              
+              prompt(`Update ${i.price} to :` );
+              }
+
+               let z = prompt (`Update ${i.desc} to :` , `${i.desc} `);
+            if(z !== null) 
+            {
+        desc.textContent = `${z}`;
+            }
+    };
+        updateBtn.textContent = ("Update");
+
+        productDiv.id = `${index}`;
+
+
+        removeBtn.style.cssText = "border: 1px solid  red  ; background-color: red  ; color: white ; border-radius : 3px;";
+        parag.style.color = "green";
+        updateBtn.style.backgroundColor = "green";
+        updateBtn.style.color = "white";
+        productDiv.style.cssText = "    margin:20px ; border: 1px solid #EEEEEE; border-radius: 8px; box-shadow: 0 4px 8px 0 #dddddd ;";
+        productDiv.appendChild(head);
+        productDiv.appendChild(desc);
+        productDiv.appendChild(parag);
+         parag.appendChild(span);
+
+        productDiv.appendChild(removeBtn);
+        productDiv.appendChild(updateBtn);
+        container.appendChild(productDiv);
+
+    console.log(productDiv);
+        
+        
+    }
+
+
+    // function remove (i){
+    //     document.removeChild(i);
+    // }
+
+    function update (idx){
+        const l =  document.querySelector(idx);
+    
+        
+    }
+    </script>
+</body>
+</html>
