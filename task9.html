@@ -33,15 +33,19 @@
     </div>
     <script>
        
-        
+        const container = document.querySelector(".container");
     const products = [  {name:"Laptop", price: 20000 ,desc:"Gaming Laptop"},
                         {name:"Mobile", price: 15000 ,desc:"Super AMOLED"},
                         {name:"AirPods", price: 10000 ,desc:"High Quality"}
     ]
-
+       if(container.children.length === 1 && products.length === 0){
+           let  msg = document.createElement("p")
+            msg.textContent = " Oops! Nothing to show here   " ;
+            container.appendChild(msg);}
+  
 let index = 0;
     for (const i of products){
-        const container = document.querySelector(".container");
+      
         const productDiv = document.createElement("div");
         const head = document.createElement("h3");
         const parag = document.createElement("p");
@@ -55,7 +59,15 @@ let index = 0;
         desc.textContent = `${i.desc} ` ;
             const removeBtn = document.createElement("button");
             removeBtn.textContent = ("Remove");
-            removeBtn.onclick = ()=> productDiv.remove();
+            removeBtn.onclick = ()=>{
+                productDiv.remove();
+                 if(container.children.length === 1){
+           let  msg = document.createElement("p")
+            msg.textContent = " Oops! Nothing to show here   " ;
+            container.appendChild(msg);
+        }
+
+} 
         const updateBtn=  document.createElement("button");
         updateBtn.onclick = ()=> {
 
@@ -100,6 +112,7 @@ let index = 0;
         productDiv.appendChild(removeBtn);
         productDiv.appendChild(updateBtn);
         container.appendChild(productDiv);
+       
 
     console.log(productDiv);
         
@@ -107,15 +120,6 @@ let index = 0;
     }
 
 
-    // function remove (i){
-    //     document.removeChild(i);
-    // }
-
-    function update (idx){
-        const l =  document.querySelector(idx);
-    
-        
-    }
     </script>
 </body>
 </html>
