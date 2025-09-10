@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+    .container
+        {  margin-top: 80px;
+            padding-top: 50px;
+            border: 1px solid #EEEEEE;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 #dddddd ;
+            text-align: center;
+        }
+
+
+        .container h2 {
+            color: #e96c6c;
+        }
+
+
+        .panel{
+            margin: 30px;
+        }
+
+        .clock {
+            color: #e96c6c;
+        }
+        
+
+    </style>
+</head>
+<body>
+  
+
+    <div class="container">
+        <h2>Time is :</h2>
+        <div  class="clock"  id="clock" style="font-size: 2em; margin-bottom: 20px;"></div>
+        <div class="panel">
+        <button class="start" id="startBtn">Start</button>
+        <button class="End" id="stopBtn">Stop</button>
+        <button class="goTo" id="goTo">Go To Link</button>
+</div>
+
+    </div>
+    <Script>
+
+        const clock = document.getElementById("clock");
+        let timer;
+
+         function showTime() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString();
+        clock.textContent = timeString;
+        console.log(timeString);
+    }
+
+     showTime();
+
+     timer = setInterval(showTime, 1000);
+     
+        const Stop  = document.getElementById("stopBtn");
+        const start = document.getElementById("startBtn");
+        const link = document.getElementById("goTo");
+       
+
+        start.onclick = function (){
+            setInterval(showTime, 1000);
+
+                console.log("started");
+        } ;
+
+
+         Stop.onclick = function (){
+            clearInterval(timer)
+                console.log("stopped");
+        } ;
+
+        link.onclick = function (){
+          let web =  prompt("Enter the link you want to visit");
+            location.href = web;
+                console.log("went");
+        } ;
+
+
+    </Script>
+</body>
+</html>
