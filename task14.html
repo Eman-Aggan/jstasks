@@ -65,23 +65,58 @@
         <h1>Task 14</h1>
         <div class="users" id="users">
             <h2>Users:</h2>
-            <ul>
-                <li>hello</li>
-               
-               
-               
+            <ul id="userslist">
+              
             </ul>
-
+          
         </div>
         <div class="products">
             <h2>Products:</h2>
-            <ul>
-            <li></li>
+            <ul id="productsList">
+
             </ul>
+            
 
         </div>
     </div>
     <script>
+    
+        let myArr = ["Amr","Ali","Osama","Ali"]
+        const myUsers = document.getElementById("userslist");
+        const myProducts = document.getElementById("productsList");
+
+
+        let mySet = new Set (myArr);
+        console.log( mySet);
+      
+        for(const e of  mySet ){
+          let li =   document.createElement("li");
+           li.innerHTML = `${e}`;
+           myUsers.appendChild(li);
+           
+        }
+
+        let myMap = new Map ([["laptop:", 15000],["Mobile:",10000],["Airpods:",1000]]);
+       
+            
+        
+
+            const iterator = myMap[Symbol.iterator]();
+            for (const e of iterator ){
+                console.log(...e);
+                 let liProduct =   document.createElement("li");
+                liProduct.innerHTML= `${e}`;
+                console.log(liProduct)
+                myProducts.appendChild(liProduct);
+               
+            }
+
+
+         
+            
+           
+        
+      
 
     </script>
 </body>
