@@ -101,11 +101,23 @@
             
         
 
-            const iterator = myMap[Symbol.iterator]();
-            for (const e of iterator ){
-                console.log(...e);
+            // const iterator = myMap[Symbol.iterator]();
+            // for (const e of iterator ){
+            //     console.log(...e);
+            //      let liProduct =   document.createElement("li");
+            //     liProduct.innerHTML= `${e}`;
+            //     console.log(liProduct)
+            //     myProducts.appendChild(liProduct);
+               
+            // }
+
+
+
+            //    const iterator = myMap[Symbol.iterator]();
+            for (const [product , price] of myMap ){
+                console.log(... [product , price]);
                  let liProduct =   document.createElement("li");
-                liProduct.innerHTML= `${e}`;
+                liProduct.innerHTML= `${ [product , price]}`;
                 console.log(liProduct)
                 myProducts.appendChild(liProduct);
                
