@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .container
+        {  margin-top: 80px;
+            padding-top: 50px;
+            border: 1px solid #EEEEEE;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 #dddddd ;
+            text-align: center;
+            background-color: white;
+        }
+
+        .panel {
+            margin: 20px;
+        }
+
+        /* .red:focus
+        {
+            
+        } */
+         .delius-regular {
+  font-family: "Delius", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+        h1{
+            font-family:"Delius", cursive;
+            font-weight: 100;
+        }
+        button{
+            height: 50px;
+
+            border-radius: 10px;
+
+        }
+
+        .red{
+            /* border: 1px solid red; */
+            width: 100%;
+            border: none;
+            color: white;
+            background-color: red;
+            
+        }
+
+
+         .yellow{
+            margin: 10px 0;
+            width: 100%;
+            border: none;
+            color: black;
+            background-color: yellow;
+        }
+
+
+         .green{
+            margin-bottom: 10px ;
+            width: 100%;
+            border: none;
+            color: white;
+            background-color: green;
+        }
+
+         .reset{
+            width: 100%;
+            border: none;
+            color: white;
+            background-color: rgb(214, 212, 212);
+        }
+    </style>
+</head>
+<body>
+     <div class="container" id="cont">
+        <h1>Background color Selector 🎨 </h1>
+        <div class="panel">
+            <button class="red" id="redBtn">red</button>
+            <button class="yellow" id="yellowBtn">Yellow</button>
+            <button class="green" id="greenBtn">Green</button>
+            <button class="reset" id="resetBtn">Reset</button>
+            <div class="msg" id="msg">
+
+            </div>
+           
+</div>
+        
+     </div>
+    <script>
+        const container = document.getElementById("cont")
+        const red = document.getElementById("redBtn");
+        const yellow = document.getElementById("yellowBtn");
+        const green = document.getElementById("greenBtn");
+        const reset = document.getElementById("resetBtn");
+        const msg = "What a lovely color ✨💖 ";
+
+        red.onclick = function (){
+
+           document.body.style.backgroundColor ="red" ;
+           window.localStorage.setItem("backgroundColor","red")
+
+           
+            const msgs =  document.createElement("p");
+            msgs.textContent = msg;
+            if(!(container.querySelector("p"))){container.appendChild(msgs);}
+           
+            
+
+           
+        }
+
+
+       
+
+        yellow.onclick = function () {
+
+
+             document.body.style.backgroundColor  =  "yellow";
+                        window.localStorage.setItem("backgroundColor","yellow")
+        }
+        green.onclick = function (){
+             document.body.style.backgroundColor  = "green";
+             window.localStorage.setItem("backgroundColor","green")
+        
+        }
+        reset.onclick = function () {
+             document.body.style.backgroundColor  = "white";
+              window.localStorage.removeItem("backgroundColor")
+        
+
+
+        }
+   
+
+           const savedColor = localStorage.getItem("backgroundColor");
+        if (savedColor) {
+            document.body.style.backgroundColor = savedColor;
+        }
+    </script>
+    
+</body>
+</html>
