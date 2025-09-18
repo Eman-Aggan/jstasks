@@ -60,8 +60,8 @@
 <body>
     <div class="container">
         <h1>Task 15</h1>
-        <form >
-            <input  name="input" class="input" type="text"  id="input" placeholder="Enter the text to be cleaned ...">
+        <form id="formId">
+            <input  name="input" class="input" type="text"  id="input" placeholder="Enter the text to be cleaned ..." required>
             <button  class="btn" id="btn"> Clean Text</button>
         </form>
         <div class="msg" id="msg"></div>
@@ -79,12 +79,21 @@
 
 
         let re = /[a-z0-9 ._]/ig;
-        console.log(input.value.match(re));
-        let st = input.value.match(re);
-        
+        console.log(input.value.trim().match(re));
+        let st = input.value.trim().match(re);
+        if(!input.value ){  msg.innerHTML = `
+      <h2>Result:</h2>
+      <p>Nothing to clean up !</p>`}
+      
+        else{
      let str = st.join("");
-      msg.innerHTML = `<p>${str}</p>`
-        
+      msg.innerHTML = `
+      <h2>Result:</h2>
+      <p>${str}</p>`
+        }
+       
+
+    
         console.log(str);
         
          setTimeout(()=>{
