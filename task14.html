@@ -115,9 +115,8 @@
 
             //    const iterator = myMap[Symbol.iterator]();
             for (const [product , price] of myMap ){
-                console.log(... [product , price]);
-                 let liProduct =   document.createElement("li");
-                liProduct.innerHTML= `${ [product , price]}`;
+                let liProduct =   document.createElement("li");
+                liProduct.innerHTML= `${ product } ${price}`;
                 console.log(liProduct)
                 myProducts.appendChild(liProduct);
                
